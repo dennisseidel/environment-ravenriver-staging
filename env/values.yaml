@@ -99,3 +99,19 @@ jenkins:
   enabled: false
 controllerbuild:
   enabled: true
+expose:
+  config:
+    domain: d10l.de
+    exposer: Ingress
+    http: "false"
+  Annotations:
+    helm.sh/hook: post-install,post-upgrade
+    helm.sh/hook-delete-policy: hook-succeeded
+jenkins:
+  Servers:
+    Global:
+      EnvVars:
+        TILLER_NAMESPACE: kube-system
+  enabled: false
+controllerbuild:
+  enabled: true
